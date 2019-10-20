@@ -4,9 +4,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import setConfigurationStorage from './Store/Reducers/configuration-storage';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+
+var reduxStore = createStore(setConfigurationStorage);
+
+ReactDOM.render(<Provider store={reduxStore}><App /></Provider>, document.getElementById('root'));
+
 serviceWorker.unregister();

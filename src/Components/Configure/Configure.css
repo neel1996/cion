@@ -1,0 +1,87 @@
+.Configure
+{
+    margin-top: 150px;
+}
+
+.configure-text input[type='text'], .configure-password input[type='password']
+{
+    outline: none;
+    border: none;
+    width: 250px;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 5px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+.configure-textarea textarea
+{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+    margin: 15px;
+    padding: 5px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+.configure-select select
+{
+    outline: none;
+    border: none;
+    width: 250px;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 5px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+}
+
+.configure-fields *
+{
+    margin: 10px;
+}
+
+#elm-thumbnail
+{
+    background: #e6e6e6;
+    border: dashed 1px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 20px;
+    width: 230px;
+    height: 250px;
+    text-align: center;
+    padding-top:50px;
+    margin-top: 30px;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+}
+
+.upload-ico
+{
+    background: url('../../assets/upload.png');
+    background-size: 100%  100%;
+    margin: auto;
+    width: 120px;
+    height: 100px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    opacity: 0.2;
+}
+
+.store-action 
+{
+    width: 500px;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.json-file-label
+{
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+    border: dashed 1px grey;
+}
