@@ -11,6 +11,7 @@ a, a:visited, a:active, a:hover{
     position: fixed;
     top:0;
     max-height: 100px;
+    z-index: 99;
 }
 
 .LogoContainer
