@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fs from 'fs';
 
 import './Configure.css';
 
 import InputElementSupplier from './InputElementSupplier';
+import { CommonControllerModule } from '../../common-controller';
 
 class Configure extends Component {
 
@@ -49,19 +49,39 @@ class Configure extends Component {
         }
     }
 
-    populateImageToTitle(event) {
+    populateImageToTile(event) {
         var imageURLParser = new FileReader();
         var imageFile = event.target.files[0];
 
         if (imageFile !== undefined && typeof imageFile !== undefined) {
             imageURLParser.readAsDataURL(event.target.files[0]);
 
-            imageURLParser.onload = () => {
-                this.props.setPrincipleThumbnail(imageURLParser.result);
-                this.setState({
-                    imageData: this.props.configuredData.principleThumbnail
-                });
-            }
+
+            imageURLParser.onload = (event) => {
+                var img = new Image();
+                img.src = event.target.result;
+
+                img.onload = () => {
+                    const elem = document.createElement('canvas');
+                    elem.width = 280;
+                    elem.height = 250;
+                    const ctx = elem.getContext('2d');
+
+                    ctx.drawImage(img, 0, 0, 280, 250);
+                    ctx.canvas.toBlob((blob) => {
+                        const compressedImage = new File([blob], "principleThumbnail", {
+                            type: 'image/jpeg',
+                            lastModified: Date.now()
+                        });
+                    }, 'image/jpeg', 0.8);
+
+                    this.props.setPrincipleThumbnail(elem.toDataURL('image/jpeg',1));
+                    this.setState({
+                        imageData: this.props.configuredData.principleThumbnail
+                    });
+
+                }
+            };
         }
     }
 
@@ -101,7 +121,7 @@ class Configure extends Component {
 
                         <input type="file" id="element-thumbnail" hidden onChange={
                             (event) => {
-                                this.populateImageToTitle(event);
+                                this.populateImageToTile(event);
                             }
                         }></input>
                     </div>
@@ -114,27 +134,46 @@ class Configure extends Component {
                             var parsedObject = JSON.parse(JSON.stringify(storedConfigData));
                             var storeConfigFlag = false;
 
-                            for(var storedKeys in storedConfigData ){
-                                if( parsedObject[storedKeys] !== undefined && parsedObject[storedKeys] !== "" ){
+                            var configStoreObject = {
+                                'principleName': parsedObject['principleName'],
+                                'principleDescription': parsedObject['principleDescription'],
+                                'principleThumbnail': parsedObject['principleThumbnail'],
+                                'storageOption': this.props.storageOption
+                            }
+
+                            if (this.props.storageOption === 'db') {
+                                configStoreObject = {
+                                    ...configStoreObject,
+                                    'dbHostName': parsedObject['dbHostName'],
+                                    'dbPortNumber': parsedObject['dbPortNumber'],
+                                    'dbUserName': parsedObject['dbUserName'],
+                                    'dbPassword': parsedObject['dbPassword'],
+                                    'dbName': parsedObject['dbName']
+                                };
+                            }
+                            else if (this.props.storageOption === 'json') {
+                                configStoreObject = {
+                                    ...configStoreObject,
+                                    'configDataStore': this.props.jsonFileName
+                                };
+                            }
+
+                            for (var storedKeys in configStoreObject) {
+                                console.log("Entry : ", storedKeys);
+                                if (configStoreObject[storedKeys] !== undefined && configStoreObject[storedKeys] !== "") {
                                     storeConfigFlag = true;
                                 }
-                                else{
+                                else {
                                     storeConfigFlag = false;
                                 }
                             }
 
-                            const configFilePath = '../../../datastore/cion-config-datastore.json';
-
-                            if(storeConfigFlag){
-                                var configFileContent = fs.readFile(configFilePath, function(err){
-                                    if(err){
-                                        console.log("File read error : " +err);
-                                    }
-                                });
-
-                                if( configFileContent === "" ){
-                                    fs.writeFile('')
-                                }
+                            if (storeConfigFlag) {
+                                var writeAPIResponse = CommonControllerModule.getConfigDataStore(configStoreObject);
+                                alert(JSON.stringify(writeAPIResponse));
+                            }
+                            else {
+                                alert("Data fields missing");
                             }
                         }
                     }>

@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import ConfigureFields from './Components/Configure/Configure';
 
 import Header from './Components/Header/Header';
+import HomePage from './Components/HomePage/HomePage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <div className="App">
           <Header />
           <Route exact path="/configure" component={ConfigureFields} />
+          <Route exact path="/" component={HomePage} />
         </div>
       </BrowserRouter>
   );
