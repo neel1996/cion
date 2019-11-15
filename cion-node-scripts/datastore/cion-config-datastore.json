@@ -1,0 +1,48 @@
+[{
+    "principleName": "Test",
+    "principleDescription": "Test",
+    "principleThumbnail": "./datastore/configuration-thumbnail/1573495948402.jpeg",
+    "storageOption": "json",
+    "configDataStore": "config-1573495948402.json",
+    "option": "CONFIG_DATASTORE"
+}, {
+    "principleName": "Test",
+    "principleDescription": "Test",
+    "principleThumbnail": "./datastore/configuration-thumbnail/1573495948402.jpeg",
+    "storageOption": "json",
+    "configDataStore": "config-1573495948402.json",
+    "option": "CONFIG_DATASTORE",
+    "principleId": "1573495948402"
+}, {
+    "principleName": "Test",
+    "principleDescription": "Test",
+    "principleThumbnail": "./datastore/configuration-thumbnail/1573495948402.jpeg",
+    "storageOption": "json",
+    "configDataStore": "config-1573495948402.json",
+    "option": "CONFIG_DATASTORE",
+    "principleId": "1573495948402"
+},{
+  "principleName": "Test",
+  "principleDescription": "Test",
+  "principleThumbnail": "./datastore/configuration-thumbnail/1573495948402.jpeg",
+  "storageOption": "json",
+  "configDataStore": "config-1573495948402.json",
+  "option": "CONFIG_DATASTORE",
+  "principleId": "1573495948402"
+},{
+  "principleName": "Pokemon",
+  "principleDescription": "Pokemon ",
+  "principleThumbnail": "./datastore/configuration-thumbnail/1573498784078.jpeg",
+  "storageOption": "json",
+  "configDataStore": "config-1573498784078.json",
+  "option": "CONFIG_DATASTORE",
+  "principleId": "1573498784078"
+},{
+  "principleName": "Pokemon",
+  "principleDescription": "Pokemon ",
+  "principleThumbnail": "./datastore/configuration-thumbnail/1573498784078.jpeg",
+  "storageOption": "json",
+  "configDataStore": "config-1573498784078.json",
+  "option": "CONFIG_DATASTORE",
+  "principleId": "1573498784078"
+}]

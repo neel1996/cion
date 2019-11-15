@@ -80,8 +80,17 @@
 
 .json-file-label
 {
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
-    border: dashed 1px grey;
+    padding: 5px;
+    border-radius: 5px;
+    border: dotted 1px grey;
+    width: 250px;
+    font-size: 14px;
+    background: #f6f6f6;
+}
+
+.jsonfile-container
+{
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0,0.5);
+
 }
