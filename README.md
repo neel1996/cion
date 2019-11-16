@@ -1,6 +1,6 @@
-# ![Cion](https://github.com/neel1996/cion/blob/master/src/assets/Logo.png?raw=true) 
+# <center>![Cion](https://github.com/neel1996/cion/blob/master/src/assets/Logo.png?raw=true) </center>
 
-# Cion 
+# <center>Cion</center> 
 ### React app created for a minimalist who love to do stats
 
 Intuitive react web application which lets you create your own entities for comparison, sorting and analytical purposes. 

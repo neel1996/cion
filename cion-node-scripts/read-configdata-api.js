@@ -15,7 +15,7 @@ var app = express();
 
 app.use(cors());
 
-app.use((req,res,next)=>{
+app.use((req, res, next) => {
     res.header({
         'Content-type': 'application/json',
         'Access-Control-Allow-Origin': '*'
@@ -24,15 +24,26 @@ app.use((req,res,next)=>{
     next();
 });
 
-app.get('/configureditems',(req,res)=>{
+app.get('/configureditems', (req, res) => {
     const adminKey = adminDataStoreKey.CONFIG_DATASTORE;
     var configDataStorePath = JSON.parse(fs.readFileSync('./datastore/admin-datastore.json'))[0].adminConsole[adminKey];
 
-    var configuredItems = JSON.parse(fs.readFileSync(configDataStorePath, 'utf8'));
+    var fileContent = fs.readFileSync(configDataStorePath, 'utf8');
+    var configuredItems = "";
 
-    res.json({
-        configuredItems
-    });
+    if (typeof fileContent !== undefined && fileContent !== "") {
+        configuredItems = JSON.parse(fileContent);
+        res.json({
+            'message': 'DATA_FETCHED', 
+            configuredItems
+        });
+    }
+    else {
+        res.json({
+            'message': 'NO_DATA'
+        })
+    }
+
 
 });
 

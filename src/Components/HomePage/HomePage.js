@@ -11,6 +11,7 @@ class HomePage extends Component {
         this.state = {
             configuredItems: "",
             errorTile: "",
+            "noDataSwitch": true,
             hostName: `http://${window.location.hostname}`,
             parsedConfigurationItems: []
         };
@@ -25,9 +26,17 @@ class HomePage extends Component {
             }
         }).then((res) => {
 
-            this.setState({
-                configuredItems: res.data
-            });
+            var responseMessage = res.data.message;
+
+            if (responseMessage === "NO_DATA") {
+
+            }
+            else {
+                this.setState({
+                    configuredItems: res.data.configuredItems,
+                    noDataSwitch: false
+                });
+            }
 
         }, (err) => {
             if (err) {
@@ -39,7 +48,7 @@ class HomePage extends Component {
     }
 
     parseResponseJSON(payload) {
-        var parsedPayload = JSON.parse(JSON.stringify(payload)).configuredItems;
+        var parsedPayload = JSON.parse(JSON.stringify(payload));
 
         let parsedItems = [];
 
@@ -48,7 +57,7 @@ class HomePage extends Component {
                 {
                     principleName: parsedPayload[i].principleName,
                     principleDescription: parsedPayload[i].principleDescription,
-                    principleThumbnail: parsedPayload[i].principleThumbnail.split("/").filter((elm)=>elm.includes(".jpeg"))
+                    principleThumbnail: parsedPayload[i].principleThumbnail.split("/").filter((elm) => elm.includes(".jpeg"))
                 }
             );
         }
@@ -59,7 +68,7 @@ class HomePage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container configured-item-container">
                 {
                     this.state.errorTile ?
                         <div>
@@ -67,14 +76,14 @@ class HomePage extends Component {
                             <p>Please reload and try again</p>
                         </div>
                         :
-                        <div className="container">
+                        <div className="configured-items">
                             {
                                 this.state.configuredItems !== undefined && this.state.configuredItems !== "" ?
-                                    <div className="configured-items-wrapper row justify-content-center">
+                                    <div className="row justify-content-center">
                                         {
                                             this.parseResponseJSON(this.state.configuredItems).map((parsedItem) => {
                                                 console.log(parsedItem)
-                                                return(
+                                                return (
                                                     <div className="card-content card my-3 mr-3">
                                                         <img src={`${this.state.hostName}:4000/thumbnailapi/${parsedItem.principleThumbnail}`} alt={parsedItem.principleName}></img>
                                                         <div className="card-body">
@@ -87,9 +96,17 @@ class HomePage extends Component {
                                         }
                                     </div>
                                     :
-                                    <h1 style={{ marginTop: '300px' }}>
-                                        Loading...
-                                    </h1>
+                                    this.state.noDataSwitch ?
+                                        <div>
+                                            <h1>No configured data available.Use the /configure page to add entities</h1>
+                                        </div>
+                                    :
+                                        <div className="d-flex">
+                                            <div className="spinner-grow text-primary"></div>
+                                            <h3 className="mx-2" style={{ color: "#0275d8" }}>Loading...</h3>
+                                        </div>
+
+
                             }
                         </div>
                 }
