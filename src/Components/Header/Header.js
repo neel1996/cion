@@ -23,7 +23,7 @@ class Header extends Component {
                         <div className="LogoContainer"></div>
                     </Link>
 
-                    <SearchBar></SearchBar>
+                    <SearchBar placeHolder=""></SearchBar>
                 </div>
                 <MenuItems></MenuItems>
             </div>

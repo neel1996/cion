@@ -5,6 +5,7 @@ import ConfigureFields from './Components/Configure/Configure';
 
 import Header from './Components/Header/Header';
 import HomePage from './Components/HomePage/HomePage';
+import ParameterConfiguration from './Components/Configure/ParameterConfigurationComponent' 
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Header />
           <Route exact path="/configure" component={ConfigureFields} />
           <Route exact path="/" component={HomePage} />
+          <Route exact path="/addparameter" component={ParameterConfiguration}></Route>
         </div>
       </BrowserRouter>
   );

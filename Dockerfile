@@ -1,13 +1,13 @@
-FROM node:12
+FROM node:latest
 
-WORKDIR /opt/cion
+WORKDIR /opt/cion/cion-react-app
 
 RUN apt-get install && apt-get update
 
-COPY package*.json /opt/cion
+COPY package*.json /opt/cion/cion-react-app
 
 RUN npm install 
 
-COPY . /opt/cion
+COPY . /opt/cion/cion-react-app
 
 CMD ["npm","start"]

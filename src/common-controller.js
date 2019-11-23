@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { resolve } from 'path';
+import { reject } from 'q';
 
 export class CommonControllerModule{
 
@@ -19,24 +21,28 @@ export class CommonControllerModule{
        multiFormData.append('option', "CONFIG_DATASTORE");
 
         var apiResponse = "";
-        axios({
-            'url':'http://localhost:5000/writefileapi',
-            'method':'POST',
-            'data': multiFormData,
-            'headers':{
-                'Content-type': 'multipart/form-data',
-                'accept': 'multipart/form-data'
-            }
-        }).then(
-            (res)=>{
-                apiResponse = JSON.stringify(res);
-            },
-            (err)=>{
-                console.log("Central File API invocation error : " +err);
-            }
+
+        return new Promise(
+            axios({
+                'url':'http://localhost:5000/writefileapi',
+                'method':'POST',
+                'data': multiFormData,
+                'headers':{
+                    'Content-type': 'multipart/form-data',
+                    'accept': 'multipart/form-data'
+                }
+            }).then(
+                (res)=>{
+                    apiResponse = JSON.stringify(res);
+                    resolve(apiResponse);
+                },
+                (err)=>{
+                    console.log("Central File API invocation error : " +err);
+                    reject(err);
+                }
+            )
         );
 
-        return apiResponse;
     }
 
     static getConfigSetDataStore(){

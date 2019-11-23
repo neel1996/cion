@@ -169,8 +169,14 @@ class Configure extends Component {
                             }
 
                             if (storeConfigFlag) {
-                                var writeAPIResponse = CommonControllerModule.getConfigDataStore(configStoreObject);
-                                alert(JSON.stringify(writeAPIResponse));
+                                CommonControllerModule.getConfigDataStore(configStoreObject).then(
+                                    (res)=>{
+                                        window.alert(res);
+                                    },
+                                    (err)=>{
+                                        window.alert(err);
+                                    }
+                                );
                             }
                             else {
                                 alert("Data fields missing");
