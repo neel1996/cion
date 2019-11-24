@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './Configure.css';
 
 import InputElementSupplier from './InputElementSupplier';
-import { CommonControllerModule } from '../../common-controller';
+import { CommonControllerModule } from '../../LogicalModules/CommonController';
 
 class Configure extends Component {
 
@@ -169,12 +169,10 @@ class Configure extends Component {
                             }
 
                             if (storeConfigFlag) {
-                                CommonControllerModule.getConfigDataStore(configStoreObject).then(
-                                    (res)=>{
-                                        window.alert(res);
-                                    },
-                                    (err)=>{
-                                        window.alert(err);
+                                CommonControllerModule.prototype.getConfigDataStore(configStoreObject).then(
+                                    (response) => {
+                                        window.alert(response.data.message);
+                                        window.location.reload();
                                     }
                                 );
                             }

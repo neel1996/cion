@@ -49,10 +49,9 @@ class HomePage extends Component {
                                         {
                                             ({ loading, err, data }) => {
                                                 if (loading) {
-                                                    console.log("Still loading...");
                                                     return (
-                                                        <div class="loading-wrapper d-flex justify-content-center my-5">
-                                                            <div class="spinner-border">
+                                                        <div className="loading-wrapper d-flex justify-content-center my-5">
+                                                            <div className="spinner-border">
                                                             </div>
                                                             <h3 className="mx-5">Loading...</h3>
                                                         </div>
@@ -68,9 +67,9 @@ class HomePage extends Component {
                                                     return (
                                                         configDataResultArray.map((configDataResult) => {
                                                             return (
-                                                                <Link to={`/configitem/${configDataResult.principleId}`}>
-                                                                    <div className=" col card-content card my-3 mr-3">
-                                                                        <img className="item-thumbnail" src={`${this.state.hostName}:5002/thumbnailapi/${configDataResult.principleThumbnail.split("/")[configDataResult.principleThumbnail.split("/").length - 1]}`} alt={configDataResult.principleName}></img>
+                                                                <Link to={`/configitem/${configDataResult.principleId}`} key={configDataResult.principleId}>
+                                                                    <div className="card-content card my-3 mr-5">
+                                                                        <img className="item-thumbnail" src={`${this.state.hostName}:5001/thumbnailapi/${configDataResult.principleThumbnail.split("/")[configDataResult.principleThumbnail.split("/").length - 1]}`} alt={configDataResult.principleName}></img>
                                                                         <div className="card-body">
                                                                             <h3>{configDataResult.principleName}</h3>
                                                                             <p>{configDataResult.principleDescription}</p>
