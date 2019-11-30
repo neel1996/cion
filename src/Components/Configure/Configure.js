@@ -148,13 +148,15 @@ class Configure extends Component {
                                     'dbPortNumber': parsedObject['dbPortNumber'],
                                     'dbUserName': parsedObject['dbUserName'],
                                     'dbPassword': parsedObject['dbPassword'],
-                                    'dbName': parsedObject['dbName']
+                                    'dbName': parsedObject['dbName'],
+                                    'principleId': new Date().getTime()
                                 };
                             }
                             else if (this.props.storageOption === 'json') {
                                 configStoreObject = {
                                     ...configStoreObject,
-                                    'configDataStore': this.props.jsonFileName
+                                    'configDataStore': this.props.jsonFileName,
+                                    'principleId': new Date().getTime()
                                 };
                             }
 

@@ -22,7 +22,11 @@ class InputElementSupplier extends Component {
             case 'password':
                 return (
                     <div className="configure-password">
-                        <input type="password" placeholder={hintText}></input>
+                        <input type="password" placeholder={hintText} onBlur = {
+                            (event) => {
+                                this.handleInput(this.props.keyref,event);
+                            }
+                        }></input>
                     </div>
                 );
             case 'select':

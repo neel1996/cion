@@ -1,0 +1,8 @@
+npm ERR! missing script: start:devServer
+npm ERR! 
+npm ERR! Did you mean one of these?
+npm ERR!     startServer
+npm ERR!     startTestServer
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/itassistors/.npm/_logs/2019-11-29T16_53_08_035Z-debug.log
