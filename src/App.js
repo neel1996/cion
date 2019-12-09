@@ -5,7 +5,7 @@ import ConfigureFields from './Components/Configure/Configure';
 
 import Header from './Components/Header/Header';
 import HomePage from './Components/HomePage/ItemCards';
-import ParamItemSelector from './Components/Configure/ParamItemSelector' 
+import ParamItemSelector from './Components/ItemParameterContainer/ParamItemSelector' 
 
 function App() {
   return (

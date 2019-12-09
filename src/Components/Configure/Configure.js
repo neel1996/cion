@@ -69,7 +69,7 @@ class Configure extends Component {
 
                     ctx.drawImage(img, 0, 0, 280, 250);
                     ctx.canvas.toBlob((blob) => {
-                        const compressedImage = new File([blob], "principleThumbnail", {
+                        new File([blob], "principleThumbnail", {
                             type: 'image/jpeg',
                             lastModified: Date.now()
                         });

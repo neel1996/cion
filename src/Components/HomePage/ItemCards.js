@@ -9,7 +9,7 @@ import gql from "graphql-tag";
 
 import "./ItemCards.css";
 
-class HomePage extends Component {
+class ItemCards extends Component {
   constructor(props) {
     super(props);
 
@@ -20,7 +20,7 @@ class HomePage extends Component {
 
   render() {
     var configuredItemGQLClient = new ApolloClient({
-      uri: this.state.hostName + ":4001" + "/configdatagraph"
+      uri: this.state.hostName + ":4001/configdatagraph"
     });
 
     const GET_CONFIG_ITEMS_QUERY = gql`
@@ -120,4 +120,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default ItemCards;

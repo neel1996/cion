@@ -14,10 +14,10 @@ class ParameterConfiguration extends Component {
     super(props);
     this.state = {
       hostName: `http://${window.location.hostname}`,
-	  selectedItemId: "",
-	  selectedItemName: "",
-	  selectedItemThumbnail: "",
-      inEditMode: true
+      selectedItemId: "",
+      selectedItemName: "",
+      selectedItemThumbnail: "",
+      inEditMode: false
     };
   }
 
@@ -88,24 +88,25 @@ class ParameterConfiguration extends Component {
                           ];
                           return (
                             <div
-                              className="col d-block mx-5"
+                              className="col-lg-4 col-md-5 col-sm-5 d-block mx-3 my-3"
                               style={cardStyle}
                               key={element.principleId}
                               onClick={() => {
                                 this.setState({
                                   principleId: element.principleId
                                 });
-                                this.handleCardClick({...element}, true);
+                                this.handleCardClick({ ...element }, true);
                               }}
                             >
                               <div>
-                                <div className="rounded"
+                                <div
+                                  className="rounded"
                                   style={{
-                                    'backgroundImage': `url("${this.state.hostName}:5001/thumbnailapi/${imgThumb}")`,
-									'display': 'block',
-									'width': '100%',
-									'height': '180px',
-									'backgroundSize': '100% 100%'
+                                    backgroundImage: `url("${this.state.hostName}:5001/thumbnailapi/${imgThumb}")`,
+                                    display: "block",
+                                    width: "100%",
+                                    height: "180px",
+                                    backgroundSize: "100% 100%"
                                   }}
                                 ></div>
                               </div>
@@ -128,16 +129,17 @@ class ParameterConfiguration extends Component {
         <ParameterAdder
           parentManipulator={this.handleCardClick}
           itemHolder={this.state}
+          principleId={this.state.principleId}
         ></ParameterAdder>
       )
     );
   }
 
-  handleCardClick = (itemCollector={}, editModeSelector) => {
+  handleCardClick = (itemCollector = {}, editModeSelector) => {
     this.setState({
-	  inEditMode: editModeSelector,
-	  selectedItemName: itemCollector.principleName,
-	  selectedItemThumbnail: itemCollector.principleThumbnail
+      inEditMode: editModeSelector,
+      selectedItemName: itemCollector.principleName,
+      selectedItemThumbnail: itemCollector.principleThumbnail
     });
   };
 }
