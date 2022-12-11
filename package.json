@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "lz-string": "^1.4.4",
     "mongoose": "^5.7.7",
     "react": "^16.11.0",
